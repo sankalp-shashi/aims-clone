@@ -1,1 +1,1 @@
-# aims-clone
+# OJ
