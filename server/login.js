@@ -32,9 +32,9 @@ app.use(express.json());
 // });
 app.use('/auth', authRouter);
 app.use('/dashboard', studentRouter);
-app.use('/', (req,res) => {
-  res.send('Welcome to the Home Page. Go to /auth to login or register');
-});
+//app.use('/', (req,res) => {
+//  res.send('Welcome to the Home Page. Go to /auth to login or register');
+//});
 // Serve React app for undefined routes
 app.use((req, res, next) => {
   if (req.method === 'GET' && !req.path.startsWith('/api')) {

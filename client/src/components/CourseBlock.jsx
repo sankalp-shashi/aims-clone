@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import axios from '../utils/axios';
 
 const CourseBlock = ({ course, type }) => {
     const handleRequestEnrollment = async () => {

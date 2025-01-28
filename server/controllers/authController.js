@@ -124,6 +124,7 @@ export const login = async (req, res) => {
             expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // 1 day
             httpOnly: false, // Allow client-side access temporarily for testing
             sameSite: 'none', // 'none' if cross-origin requests are used
+            secure: 'true',
         };
         
         // res.cookie('token', token, cookieOptions);
@@ -152,3 +153,7 @@ export const logout = async (req, res) => {
     res.clearCookie('token');
     res.json({ message: 'Logged out successfully' });
 };
+
+
+
+
