@@ -4,7 +4,7 @@ import axios from '../utils/axios';
 const CourseBlock = ({ course, type }) => {
     const handleRequestEnrollment = async () => {
         try {
-            await axios.post('/dashboard/request-enrollment', { courseCode: course.code });
+            await axios.post('/dashboard/request-enrollment', { courseCode: course.code});
             alert('Enrollment request sent!');
         } catch (error) {
             alert('Error sending enrollment request');

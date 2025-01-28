@@ -16,6 +16,16 @@ const instructorSchema = new mongoose.Schema({
         required: false,
     },
 
+    approvalRequests: {
+        type: [String],
+        required: false,
+    },
+
+    enrollmentRequests: {
+        type: [String],
+        required: false,
+    },
+
     instructorCode: {
         type: String,
         required: true,

@@ -5,7 +5,7 @@ import {
     getRequestedCourses,
     requestEnrollment
 } from '../controllers/studentDashboardController.js';
-import { authenticateToken } from '../middleware/authMiddleware.js';
+import { authenticateToken } from '1../middleware/authMiddleware.js';
 
 const router = express.Router();
 
