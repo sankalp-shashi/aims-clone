@@ -6,7 +6,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/auth" element={<AuthPage></AuthPage>}/>
+        <Route path="/" element={<AuthPage></AuthPage>}/>
         <Route path="/dashboard" element={<DashboardPage></DashboardPage>} />
       </Routes>
     </Router>
