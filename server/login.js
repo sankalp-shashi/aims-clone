@@ -14,7 +14,7 @@ app.use(cookieParser());
 // Middleware to handle CORS
 // app.use(cors());
 const corsOptions = {
-  origin: 'http://localhost:5173', // Replace with your frontend URL
+  origin: 'http://localhost:5174', // Replace with your frontend URL
   credentials: true, // Allow credentials (cookies)
 };
 app.use(cors(corsOptions));
@@ -32,9 +32,9 @@ app.use(express.json());
 // });
 app.use('/auth', authRouter);
 app.use('/dashboard', studentRouter);
-//app.use('/', (req,res) => {
-//  res.send('Welcome to the Home Page. Go to /auth to login or register');
-//});
+app.use('/', (req,res) => {
+  res.send('Welcome to the Home Page. Go to /auth to login or register');
+});
 // Serve React app for undefined routes
 app.use((req, res, next) => {
   if (req.method === 'GET' && !req.path.startsWith('/api')) {

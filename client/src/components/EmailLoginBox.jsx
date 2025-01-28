@@ -53,7 +53,7 @@ const EmailLoginBox = (props) => {
 
                 {/* Send OTP Button */}
                 <button
-                    onClick={props.onSendOTPClick}
+                    onClick={ ()=>{console.log("button lciked"); props.onSendOTPClick();}}
                     className="bg-indigo-600 text-white rounded-md px-4 py-2 mt-4 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400"
                 >
                     Send OTP

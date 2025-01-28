@@ -1,9 +1,8 @@
-import axios from "axios";
+import axios from 'axios';
 
-const instance = axios.create({
-  baseURL: "http://localhost:5000", // Your backend server URL
-  withCredentials: true, // Ensures cookies are sent with requests
+const instance =axios.create({
+    baseURL: "http://localhost:5000",
+    withCredentials: 'true',
 });
 
 export default instance;
-

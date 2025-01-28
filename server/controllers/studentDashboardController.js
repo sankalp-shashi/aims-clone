@@ -8,7 +8,7 @@ export const getAvailableCourses = async (req, res) => {
     try {
         const courses = await Course.find();
         console.log('Courses fetched:', courses); // Log fetched courses
-        res.status(200).json(courses, req.user);
+        res.status(200).json(courses);
     } catch (error) {
         console.error('Error in getAvailableCourses:', error);
         res.status(500).json({ message: 'Internal Server Error' });
@@ -42,10 +42,10 @@ export const getRequestedCourses = async (req, res) => {
 // Request enrollment
 export const requestEnrollment = async (req, res) => {
     try {
-        console.log('Authenticated User:', req);
-        console.log('Requesting enrollment for:', req.body.courseCode);
         const { courseCode } = req.body;
+        console.log('Authenticated user: ', req.user);
         const student = await Student.findOne({ email: req.user.email });
+        
         if (!student.requestedCourses.includes(courseCode)) {
             student.requestedCourses.push(courseCode);
             await student.save();
@@ -54,7 +54,6 @@ export const requestEnrollment = async (req, res) => {
             res.status(400).json({ error: 'Already requested' });
         }
     } catch (error) {
-        console.error('Error in requestEnrollment:', error);
         res.status(500).json({ error: 'Error sending enrollment request' });
     }
 };

@@ -5,7 +5,7 @@ import {
     getRequestedCourses,
     requestEnrollment
 } from '../controllers/studentDashboardController.js';
-import { authenticateToken } from '1../middleware/authMiddleware.js';
+import { authenticateToken } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
@@ -21,8 +21,8 @@ router.get('/available-courses', authenticateToken, getAvailableCourses);
 // });
 
 // router.get('/available-courses', );
-router.get('/enrolled-courses', getEnrolledCourses);
-router.get('/requested-courses', getRequestedCourses);
-router.post('/request-enrollment', requestEnrollment);
+router.get('/enrolled-courses',authenticateToken , getEnrolledCourses);
+router.get('/requested-courses',authenticateToken , getRequestedCourses);
+router.post('/request-enrollment',authenticateToken , requestEnrollment);
 
 export {router as studentRouter};

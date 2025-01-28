@@ -50,7 +50,9 @@ export const register = async (req, res) => {
         
         const cookieOptions = {
             expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // 1 day
-            httpOnly: false, // Cookie can be accessed from JavaScript
+            httpOnly: false,
+            sameSite:'none',
+            secure:'true' // Cookie can be accessed from JavaScript
         };
         
         res.status(200)
@@ -110,7 +112,7 @@ export const login = async (req, res) => {
         }
 
         const token = jwt.sign(
-            { id: existingUser._id, role: existingUser.role },
+            { id: existingUser._id, role: existingUser.role, email: existingUser.email },
             process.env.JWT_SECRET,
             { expiresIn: '1h' }
         );
@@ -122,9 +124,9 @@ export const login = async (req, res) => {
 
         const cookieOptions = {
             expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // 1 day
-            httpOnly: false, // Allow client-side access temporarily for testing
-            sameSite: 'none', // 'none' if cross-origin requests are used
-            secure: 'true',
+            httpOnly: true, // Allow client-side access temporarily for testing
+            sameSite: 'none',
+            secure:'true', // 'none' if cross-origin requests are used
         };
         
         // res.cookie('token', token, cookieOptions);
@@ -153,7 +155,3 @@ export const logout = async (req, res) => {
     res.clearCookie('token');
     res.json({ message: 'Logged out successfully' });
 };
-
-
-
-

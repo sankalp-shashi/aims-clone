@@ -15,6 +15,7 @@ const generateOTP = () => {
 };
 
 export const sendOTP = async (req, res) => {
+    console.log("hilooo");
     try {
         // Configure nodemailer
         const transporter = nodemailer.createTransport({
@@ -29,15 +30,18 @@ export const sendOTP = async (req, res) => {
         const encryptedOTP = await bcrypt.hash(plaintextOTP.toString(10), 12);
     
        
-        const {email} = req.body;
+        const {email,role} = req.body;
+        console.log(req.body);
+        // console.log("email, role: ",{email},{role});
         if (!email) {
             return res.status(400).json({message: 'Email is required'});
         }
-
+        
+        
         const existingOTP = await otp.findOne({email});
         const existingUser = await user.findOne({email});
-        if (!existingUser) {
-            return res.status(404).json({message: 'User not found'});
+        if (!existingUser || existingUser.role!==role) {
+            return res.status(403).json({message: 'User not found'});
         }
         if (existingOTP)
         {

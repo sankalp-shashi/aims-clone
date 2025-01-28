@@ -1,5 +1,6 @@
 export const handleError = (props) => {
-    switch(props.error.response.status) {
+  console.log(props);  
+  switch(props.error.response.status) {
       case 400:
         props.setError('This username or email is linked to another account.');
         break;
